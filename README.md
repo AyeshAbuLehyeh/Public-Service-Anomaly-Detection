@@ -5,4 +5,4 @@
 # then walk through and run the code to preprocess the data
 # then splitting and feature extraction then training and testing using the needed algorithm 
 # we have split the code to have each used algorithm in a box with the evaluation metrics to evaluate on. 
-# let us know if you want further information to help reproducing the code. 
+# let us know if you want further information to help reproducing the code, we leave comments that will help to reproduce or use the code 
