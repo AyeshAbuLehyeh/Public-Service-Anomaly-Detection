@@ -1,63 +1,70 @@
-# CS254-Project-ML
-1. Our dataset is private so we are not sharing it here 
-2. We have divided the code to be run step by step
-3. please use the Full_Code file to reproduce the results
+# Strategies for Crisis-Responsive Governance: Automated Anomaly Identification in Public Services
 
-# Below is explanition of each function in the code: 
-preprocess_text(text):
-This function preprocesses a given text by converting it to lowercase, removing punctuation, numbers, and stopwords.
+[![Paper-Link]](https://ojs.iscram.org/index.php/Proceedings/article/view/106) This repository contains the official implementation for the paper **"Strategies for Crisis-Responsive Governance: Automated Anomaly Identification in Public Services."**
 
-load_and_preprocess_data():
-This function loads the raw data from CSV files, drops unnecessary columns, and selects relevant columns for further processing.
+Our work introduces a machine learning tool designed to help public service systems (like 311) automatically classify service requests and detect anomalies, which is especially critical during a crisis.
 
-preprocess_features_and_labels(filtered_df):
-This function preprocesses the features (issue descriptions) and labels (categories) extracted from the filtered dataframe.
-It applies the preprocess_text() function to clean the text data, removes missing values, and filters out certain categories.
+---
 
-visualize_original_categories_distribution(data):
-This function visualizes the distribution of original categories in the dataset using bar plots.
-It calculates the count and ratio of each category and displays them in a bar plot.
+## 📜 Overview
 
-train_and_evaluate_models(X_train_tfidf, X_test_tfidf, y_train, y_test):
-This function trains and evaluates different machine learning models (Linear SVM, Random Forest, Decision Tree, Naive Bayes) using TF-IDF vectorized features.
-It returns the accuracy scores for each model.
+During emergencies, public service systems are often overwhelmed with a surge in requests. Manually categorizing these requests and identifying emerging issues is slow and labor-intensive. This project provides a tool that:
+1.  **Automatically classifies** service calls into predefined categories using a Support Vector Machine (SVM) model.
+2.  **Detects anomalies** and irregular requests that may signal a new or growing crisis, enabling a faster response.
 
-train_keras_model(X_train, y_train, X_test, y_test):
-This function trains and evaluates a TensorFlow/Keras sequential model for text classification.
-It tokenizes the text data, builds a Bidirectional LSTM model, compiles it, trains it, and evaluates its performance.
-Additionally, it plots the model accuracy and loss trends during training.
+We validated this approach using data from the Orange County, Florida 311 System, with a specific focus on the COVID-19 period. The code in this repository allows for the full replication of our methodology.
 
-detect_anomalies(X_train, y_train, threshold, X_test, y_test):
-This function performs anomaly detection on the testing data using a Linear SVC model.
-It calculates decision scores for the testing data and identifies anomalies based on a specified threshold.
-Anomalies are counted for each day, and a daily trend plot of anomalies is generated.
 
-main():
-This is the main function that orchestrates the entire process.
-It loads and preprocesses the data, visualizes category distribution, splits the data into train and test sets, trains and evaluates machine learning models, trains and evaluates a TensorFlow/Keras model, detects anomalies, and plots the daily trend of anomalies.
+## 🚀 Getting Started
 
-# How to Reproduce the results: 
+Follow these instructions to set up the environment and run the code.
 
-Environment Setup:
-Ensure you have Python installed on your system along with the necessary libraries specified in the script, including numpy, pandas, matplotlib, seaborn, nltk, scikit-learn, and tensorflow.
+### 1. Prerequisites
+Ensure you have Python 3.8+ installed. All required libraries are listed in the `requirements.txt` file.
 
-Data Preparation: # remember the dataset is private
+### 2. Installation
+Clone the repository and install the dependencies:
 
-Download the two CSV files, namely "311DataDump_Oct2020_Dec2021.csv" and "311DataDump_10292020_1403.csv", and place them in the same directory as the script.
-Make sure the CSV files contain the required columns: 'created_on', 'category', and 'issue_desc'. 
+Clone this repository
+git clone ....
+cd Public-Service-Anomaly-Detection
 
-Run the Script:
-Open the Python script in your preferred Python environment or text editor.
-Execute the script by running the main() function.
+Install the required libraries
+pip install -r requirements.txt
+ 
+### 3. Reproducing the Results
+Follow these steps to run the full analysis pipeline as described in our paper.
 
-Analysis and Results:
-The script will load and preprocess the data, visualize the distribution of original categories, split the data into train and test sets, and train and evaluate various machine learning models and a TensorFlow/Keras model.
-The accuracy scores for each model will be printed to the console.
-Anomaly detection will be performed on the testing data, and the daily trend of anomalies will be plotted.
+1. Data Preparation
+The Orange County 311 dataset used in our study is private and cannot be shared publicly. However, you can adapt this code for your own dataset.
 
-Interpreting Results:
-Observe the accuracy scores of the machine learning models to see their performance in classifying the 311 service requests.
-You will see the daily trend of anomalies to identify any unusual patterns or spikes in service requests that deviate from the norm.
+To use the script, your data must be in CSV format and placed in the same directory as the script. The script expects the following files and column names:
 
-Adjusting Parameters:
-Experiment with different anomaly detection thresholds to observe their effects on anomaly detection results.
+311DataDump_Oct2020_Dec2021.csv
+
+311DataDump_10292020_1403.csv
+
+Both files must contain these three columns:
+
+created_on: The timestamp of the service request.
+
+category: The predefined service category (label).
+
+issue_desc: The text description of the service request.
+
+2. Run the Analysis
+To reproduce the results, execute the Full_Code.py file. This single script runs the entire pipeline from data preprocessing to model evaluation and anomaly detection.
+
+## How to Cite
+If you use this code or our research in your work, please cite our paper:
+
+```bibtex
+@article{Unveren_Lehyeh_Pamukcu_Zobel_2024,
+  title   = {Strategies for Crisis-Responsive Governance: Automated Anomaly Identification in Public Services},
+  author  = {Unveren, Hakan and Lehyeh, Ayesh Abu and Pamukcu, Duygu and Zobel, Christopher W.},
+  journal = {Proceedings of the International ISCRAM Conference},
+  year    = {2024},
+  month   = {May},
+  doi     = {10.59297/evk7eh36},
+  url     = {[https://ojs.iscram.org/index.php/Proceedings/article/view/106](https://ojs.iscram.org/index.php/Proceedings/article/view/106)}
+}
