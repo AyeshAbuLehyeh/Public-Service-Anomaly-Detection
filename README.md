@@ -35,7 +35,7 @@ pip install -r requirements.txt
 ### 3. Reproducing the Results
 Follow these steps to run the full analysis pipeline as described in our paper.
 
-Data Preparation
+#### Data Preparation
 The Orange County 311 dataset used in our study is private and cannot be shared publicly. However, you can adapt this code for your own dataset.
 
 To use the script, your data must be in CSV format and placed in the same directory as the script. The script expects the following files and column names:
@@ -52,7 +52,7 @@ category: The predefined service category (label).
 
 issue_desc: The text description of the service request.
 
-Run the Analysis
+#### Run the Analysis
 To reproduce the results, execute the Full_Code.py file. This single script runs the entire pipeline from data preprocessing to model evaluation and anomaly detection.
 
 ## How to Cite
